@@ -22,20 +22,20 @@ func main() {
 	actions := []toast.Action{}
 	qmsg := ""
 	for _, q := range quotes {
-		qmsg += fmt.Sprintf("%s:%v ",
+		qmsg += fmt.Sprintf("%s:%v\n",
 			q.Symbol, q.Close,
 		)
 	}
 	notification := &toast.Notification{
-		AppID:   "ToastQuote",
-		Title:   "Toast Quote",
+		AppID: "ToastQuote",
+		//Title:   "Toast Quote",
 		Message: qmsg,
 		Actions: actions,
 		//ActivationType:      "protocol",
 		//ActivationArguments: "https://google.com",
-		//Audio: "sms",
+		Audio: "ms-winsoundevent:Notification.Looping.Call6",
 		//Loop:                false,
-		//Duration:            "long",
+		Duration: "long",
 	}
 
 	if err := notification.Push(); err != nil {
